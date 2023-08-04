@@ -1,0 +1,28 @@
+name: comic_book
+description: Project comic book for Sundevs
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter_bloc: ^8.0.0
+  bloc: ^8.0.0
+  http: ^1.1.0
+  dio: ^5.3.2
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+   - images/
