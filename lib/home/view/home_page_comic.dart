@@ -1,4 +1,5 @@
 import 'package:comic_book/home/bloc/home_bloc.dart';
+import 'package:comic_book/home/view/NavigationDrawBarHome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,6 +15,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final HomeBloc homeBloc = HomeBloc();
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     homeBloc.add(HomeInitialEvents());
@@ -23,15 +26,13 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Container(
-          padding: const EdgeInsets.all(
-              5
+      key: _scaffoldKey,
+        drawer: const NavigationDrawerHome(),
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Image.asset("images/logo.png"),
+            onPressed: () { _scaffoldKey.currentState!.openDrawer(); },
           ),
-          child: Image.asset(
-                'images/logo.png'
-          ),
-        ),
         centerTitle: true,
         title: const Text(
             "Comic Book"
@@ -68,7 +69,7 @@ class _HomeState extends State<Home> {
                   );
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2
+                    crossAxisCount: 1
                 ),
               );
             default:
